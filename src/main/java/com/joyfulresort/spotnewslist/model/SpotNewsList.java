@@ -1,4 +1,4 @@
-package com.joyfulresort.spotnewslist;
+package com.joyfulresort.spotnewslist.model;
 
 import java.util.Date;
 
