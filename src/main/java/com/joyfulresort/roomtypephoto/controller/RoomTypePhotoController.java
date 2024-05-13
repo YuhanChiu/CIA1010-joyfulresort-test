@@ -35,6 +35,8 @@ public class RoomTypePhotoController {
 	@Autowired
 	RoomTypeService roomTypeSvc;
 	
+	
+	
 	@GetMapping("getAll")
 	public String getAll(ModelMap model) {
 		List<RoomTypePhoto> roomTypePhoto = roomTypePhotoSvc.getAll();

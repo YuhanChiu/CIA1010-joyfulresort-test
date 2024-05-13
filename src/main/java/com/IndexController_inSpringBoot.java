@@ -14,6 +14,10 @@ import com.joyfulresort.room.model.RoomService;
 //import com.dept.model.DeptVO;
 import com.joyfulresort.roomtype.model.RoomType;
 import com.joyfulresort.roomtype.model.RoomTypeService;
+import com.joyfulresort.roomtypephoto.model.RoomTypePhoto;
+import com.joyfulresort.roomtypephoto.model.RoomTypePhotoService;
+import com.joyfulresort.spotnewslist.model.SpotNewsList;
+import com.joyfulresort.spotnewslist.model.SpotNewsListService;
 
 import java.util.*;
 
@@ -30,6 +34,12 @@ public class IndexController_inSpringBoot {
 	
 	@Autowired
 	RoomService roomSvc;
+	
+	@Autowired
+	SpotNewsListService spotNewsListSvc;
+	
+	@Autowired
+	RoomTypePhotoService roomTypePhotoSvc;
 	
     // inject(注入資料) via application.properties
     @Value("${welcome.message}")
@@ -165,12 +175,54 @@ public class IndexController_inSpringBoot {
       	return "back-end/roomtypephoto/updateRoomTypePhoto";
       	}
        
+       @ModelAttribute("roomTypePhoto")  // for select_page.html 第97 109行用 // for listAllEmp.html 第85行用
+  		protected List<RoomTypePhoto> referenceroomTypePhotoListData(Model model) {	
+      	List<RoomTypePhoto> list = roomTypePhotoSvc.getAll();
+  		return list;
+  		}
        
-       
+
 	@ModelAttribute("roomTypeListData") // for select_page.html 第135行用
 	protected List<RoomType> referenceListData_RoomType1(Model model) {
 		model.addAttribute("roomType", new RoomType()); // for select_page.html 第133行用
 		List<RoomType> list = roomTypeSvc.getAll();
 		return list;
 	}
+	
+	@ModelAttribute("spotNewsListListData") // for select_page.html 第135行用
+	protected List<SpotNewsList> referenceListData_SpotNewsList(Model model) {
+		model.addAttribute("spotNewsList", new RoomType()); // for select_page.html 第133行用
+		List<SpotNewsList> list = spotNewsListSvc.getAll();
+		return list;
+		}
+
+	  @ModelAttribute("spotNewsList")  // for select_page.html 第97 109行用 // for listAllEmp.html 第85行用
+		protected List<SpotNewsList> referencespotNewsListListData(Model model) {	
+    	List<SpotNewsList> list = spotNewsListSvc.getAll();
+		return list;
+		}
+
+	  	@GetMapping("/spotnewslist/spotnewslistselect")
+ 		public String SpotNewsListSelect(Model model) {
+ 		return "back-end/spotnewslist/spotnewslistselect";		
+	  	}
+     
+//	   	@GetMapping("/spotnewslist/addSpotNewsList")
+//	  	public String addSpotNewsList(Model model) {
+//	  		return "back-end/spotnewslist/addSpotNewsList";
+//	  	}
+     
+	    @GetMapping("/spotnewslist/listAllSpotNewsList")
+	   	public String listAllSpotNewsList(Model model) {
+	   	return "back-end/spotnewslist/listAllSpotNewsList";
+	   	}
+     
+	    @GetMapping("/spotnewslist/updateSpotNewsList")
+	    public String updateSpotNewsList(Model model) {
+	    return "back-end/spotnewslist/updateSpotNewsList";
+	    }
+	    
+	    
 }
+
+
