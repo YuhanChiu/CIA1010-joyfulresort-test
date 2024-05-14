@@ -1,4 +1,4 @@
-package com.joyfulresort.spotnewslist.controller;
+package com.joyfulresort.newslist.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,19 +22,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.joyfulresort.newslist.model.NewsList;
+import com.joyfulresort.newslist.model.NewsListService;
+
 import java.util.*;
-import com.joyfulresort.spotnewslist.model.SpotNewsList;
-import com.joyfulresort.spotnewslist.model.SpotNewsListService;
 
 
 
 @Controller
 @Validated
-@RequestMapping("/spotnewslist")
-public class SpotNewsListIdController {
+@RequestMapping("/newslist")
+public class NewsListIdController {
 	
 	@Autowired
-	SpotNewsListService spotNewsListSvc;
+	NewsListService newsListSvc;
 	
 
 	/*
@@ -48,27 +49,27 @@ public class SpotNewsListIdController {
 		@Digits(integer = 4, fraction = 0, message = "最新消息: 請填數字-請勿超過{integer}位數")
 		@Min(value = 1, message = "最新消息編號: 不能小於{value}")
 		@Max(value = 100, message = "最新消息編號: 不能超過{value}")
-		@RequestParam("spotNewsListId") String spotNewsListId,
+		@RequestParam("newsListId") String newsListId,
 		ModelMap model) {
 		
 		/***************************2.開始查詢資料*********************************************/
 //		EmpService empSvc = new EmpService();
-		SpotNewsList spotNewsList = spotNewsListSvc.getOneSpotNewsList(Integer.valueOf(spotNewsListId));
+		NewsList newsList = newsListSvc.getOneNewsList(Integer.valueOf(newsListId));
 		
-		List<SpotNewsList> list = spotNewsListSvc.getAll();
-		model.addAttribute("spotNewsListListData", list);     // for select_page.html 第97 109行用
+		List<NewsList> list = newsListSvc.getAll();
+		model.addAttribute("newsListListData", list);     // for select_page.html 第97 109行用
 	
 		
-		if (spotNewsList == null) {
+		if (newsList == null) {
 			model.addAttribute("errorMessage", "查無資料");
-			return "back-end/spotnewslist/spotnewslistselect";
+			return "back-end/newslist/newslistselect";
 		}
 		
 		/***************************3.查詢完成,準備轉交(Send the Success view)*****************/
-		model.addAttribute("spotNewsList", spotNewsList);
+		model.addAttribute("newsList", newsList);
 		model.addAttribute("getOne_For_Display", "true"); // 旗標getOne_For_Display見select_page.html的第156行 -->
 		
-		return "back-end/spotnewslist/listOneSpotNewsList";  // 查詢完成後轉交listOneEmp.html
+		return "back-end/newslist/listOneNewsList";  // 查詢完成後轉交listOneEmp.html
 //		return "back-end/emp/select_page"; // 查詢完成後轉交select_page.html由其第158行insert listOneEmp.html內的th:fragment="listOneEmp-div
 	}
 

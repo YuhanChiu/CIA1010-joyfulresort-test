@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>SpotNewsList Demo</title>
+    <title>NewsList Demo</title>
     <link th:insert="@{/back-end/htmlfile/css.html}" />
     <style type="text/css">
         body {
@@ -47,12 +47,12 @@
     <div class="bg-light rounded">
         <div class="G3_content">
 
-            <h2>最新消息管理</h2>
+            <h2>媒體報導管理</h2>
              </br> 
             <div>
-                <a th:href="@{/spotnewslist/getAll}">查詢所有最新消息</a><br>
+                <a th:href="@{/newslist/getAll}">查詢所有媒體報導</a><br>
                 
-                <a th:href="@{/spotnewslist/addSpotNewsList}">新增一筆最新消息</a><br>
+                <a th:href="@{/newslist/addNewsList}">新增一筆媒體報導</a><br>
             </div>
             
           </br>  
@@ -62,10 +62,10 @@
 <!-- 	<div class="a"> -->
 
 	
-		<form method="post" th:action="@{/spotnewslist/getOne_For_Display}">
-				選擇最新消息編號:
-				<select name="spotNewsId">
-				     <option th:each="spotNewsList : ${spotNewsListListData}" th:value="${spotNewsList.spotNewsId}" th:text="${spotNewsList.spotNewsId}" />
+		<form method="post" th:action="@{/newslist/getOne_For_Display}">
+				選擇媒體報導編號:
+				<select name="newsId">
+				     <option th:each="newsList : ${newsListListData}" th:value="${newsList.newsId}" th:text="${newsList.newsId}" />
 			    </select>
 				<input type="submit" value="送出">
 			</form><br>
@@ -74,10 +74,10 @@
 		
 		
 		
-		<form method="post" th:action="@{/spotnewslist/getOne_For_Display}">
-				選擇最新消息摘要:
-				<select name="spotNewsId">
-				     <option th:each="spotNewsList : ${spotNewsListListData}" th:value="${spotNewsList.spotNewsId}" th:text="${spotNewsList.spotNewsAbstract}" />
+		<form method="post" th:action="@{/newslist/getOne_For_Display}">
+				選擇媒體報導摘要:
+				<select name="newsId">
+				     <option th:each="newsList : ${newsListListData}" th:value="${newsList.newsId}" th:text="${newsList.newsAbstract}" />
 			    </select>
 				<input type="submit" value="送出">
 			</form><br>
