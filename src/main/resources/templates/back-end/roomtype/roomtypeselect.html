@@ -53,6 +53,23 @@
                 <a th:href="@{/roomtype/addRoomType}">新增一筆房型</a><br>
             </div>
       
+             <form method="post" th:action="@{/roomtype/getOne_For_Display}">
+                選擇房型編號:
+                <select name="roomTypeId">
+                    <option th:each="roomType : ${roomTypeListData}" th:value="${roomType.roomTypeId}" th:text="${roomType.roomTypeId}"></option>
+                </select>
+                <input type="submit" value="送出">
+            </form><br>
+            
+
+            
+            <form method="post" th:action="@{/roomtype/getOne_For_Display}">
+                選擇房型價格:
+                <select name="roomTypeId">
+                    <option th:each="roomType : ${roomTypeListData}" th:value="${roomType.roomTypeId}" th:text="${roomType.roomTypePrice}"></option>
+                </select>
+                <input type="submit" value="送出">
+            </form><br>
 
         </div>
     </div>
