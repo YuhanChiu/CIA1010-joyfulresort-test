@@ -53,9 +53,40 @@
                 <a th:href="@{/roomtypephoto/addRoomTypePhoto}">新增房型圖片</a><br>
                 
             </div>
-            
 
-        </div>
+
+	<form method="post" th:action="@{/roomtypephoto/getOne_For_Display}">
+    房型名稱: 
+    <select name="roomTypeId">
+        <option th:each="roomType : ${roomTypeListData}"th:value="${roomType.roomTypeId}" th:text="${roomType.roomTypeName}">
+        </select>
+		<input type="submit" value="送出">
+			</form>
+			<br>
+
+<!-- <form method="post" th:action="@{/roomtypephoto/getOne_For_Display}"> -->
+<!--     房型編號:  -->
+<!--     <select name="roomTypeId"> -->
+<!--         <option th:each="roomTypePhoto : ${roomTypePhotoListData}" -->
+<!--                 th:value="${roomTypePhoto.roomTypeId}"  -->
+<!--                 th:text="${roomTypePhoto.roomTypeId}"> -->
+<!--         </option> -->
+<!--     </select> -->
+<!--     <input type="submit" value="送出"> -->
+<!-- </form> -->
+<!-- <br> -->
+
+
+
+<!-- 			<form method="post" th:action="@{/newslist/getOne_For_Display}"> -->
+<!-- 				選擇媒體報導摘要: <select name="newsId"> -->
+<!-- 			<option th:each="newsList : ${newsListListData}"th:value="${newsList.newsId}" th:text="${newsList.newsAbstract}" /> -->
+<!-- 			</select> <input type="submit" value="送出"> -->
+<!-- 			</form> -->
+<!-- 			<br> -->
+
+
+		</div>
     </div>
 </div>
 

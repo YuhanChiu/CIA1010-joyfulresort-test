@@ -47,23 +47,7 @@
                     <form th:action="@{'/roomschedule/addOne'}" method="post">
     					<button type="submit">新增一筆訂單</button>
 					</form>
-                    <br><br>
-                </div>
-                <h3><b>複合查詢 (使用 Criteria Query)：</b></h3>
-                <form th:action="@{/roomorder/list_ByCompositeQuery}" method="post">
-                    <p><label>會員名字模糊查詢：</label></p> 	
-                    <input type="text" name="membername"><br>
-                    <p><label>會員id查詢：</label></p> 	
-                    <input type="text" name="memberid">
-                    <p><label>預定checkin日期間範圍</label></p>
-                    <input type="date" name="startcheckindate"> ～ <input type="date" name="endcheckindate"><br>
-                    <p><label>預定checkout日期間範圍</label></p>
-                    <input type="date" name="startcheckoutdate"> ～ <input type="date" name="endcheckoutdate"><br>
-                    <p><label>訂單成立期間範圍</label></p>
-                    <input type="date" name="startorderdate"> ～ <input type="date" name="endorderdate"><br>
-                    <p><input type="submit" value="送出"></p>
-                    
-                </form>
+                   </div>
             </div>
         </div>
     </div>
